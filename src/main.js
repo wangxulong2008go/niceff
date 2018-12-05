@@ -19,9 +19,11 @@ const router = new VueRouter({
 	strict: process.env.NODE_ENV !== 'production',
 	scrollBehavior (to, from, savedPosition) {
 	    if (savedPosition) {
+			//浏览器的返回或者前进的时候
 		    return savedPosition
 		} else {
 			if (from.meta.keepAlive) {
+				//如果是keepAlive的时候则，滚动到相应位置
 				from.meta.savedPosition = document.body.scrollTop;
 			}
 		    return { x: 0, y: to.meta.savedPosition || 0 }

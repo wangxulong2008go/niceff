@@ -44,6 +44,24 @@
                     </router-link>
                 </ul>
             </section>
+            <section>
+               <nav class="msite_nav">
+                    <div class="swiper-container" v-if="foodTypes.length">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide food_types_container" v-for="(item, index) in foodTypes" :key="index">
+                                <router-link :to="{path: '/food'}" v-for="foodItem in item" :key="foodItem.id" class="link_to_food">
+                                    <figure>
+                                        <img :src="imgBaseUrl + foodItem.image_url">
+                                        <figcaption>{{foodItem.title}}</figcaption>
+                                    </figure>
+                                </router-link>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else>
+                </nav>
+            </section>
             <section class="profile-1reTe">
                 <!-- 我的订单 -->
                 <router-link to='/order' class="myorder">
@@ -142,11 +160,13 @@ import footGuide from 'src/components/footer/footGuide'
 import {mapState, mapMutations} from 'vuex'
 import {imgBaseUrl} from 'src/config/env'
 import {getImgPath} from 'src/components/common/mixin'
-
+import 'src/plugins/swiper.min.js'
+import 'src/style/swiper.min.css'
 export default {
     data(){
         return{
             profiletitle: '我的',
+            foodTypes:[],
             username: '登录/注册',           //用户名
             resetname: '',
             mobile: '暂无绑定手机号',             //电话号码
@@ -154,10 +174,18 @@ export default {
             count : 0,             //优惠券个数
             pointNumber : 0,       //积分数
             avatar: '',             //头像地址
-            imgBaseUrl,
+            imgBaseUrl: 'https://fuss10.elemecdn.com' //图片域名地址
         }
     },
     mounted(){
+        //获取导航食品类型列表
+		    let res = [{title:'单dd独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'},{title:'单独',image_url:'/2/35/696aa5cf9820adada9b11a3d14bf5jpeg.jpeg'}];
+    		this.foodTypes = [res];
+        	//初始化swiper
+        	new Swiper('.swiper-container', {
+		        pagination: '.swiper-pagination',
+		        loop: true
+		    });
         this.initData();
     },
     mixins: [getImgPath],
@@ -218,6 +246,25 @@ export default {
             font-family: Helvetica Neue,Tahoma,Arial;
         }
     }
+    .food_types_container{
+		display:flex;
+		flex-wrap: wrap;
+		.link_to_food{
+			width: 33.33%;
+			padding: 0.3rem 0rem;
+			@include fj(center);
+			figure{
+				img{
+					margin-bottom: 0.3rem;
+					@include wh(1.8rem, 1.8rem);
+				}
+				figcaption{
+					text-align: center;
+					@include sc(0.55rem, #666);
+				}
+			}
+		}
+	}
    .profile-number{
         padding-top:1.95rem;
         .profile-link{

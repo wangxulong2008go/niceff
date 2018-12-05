@@ -319,7 +319,6 @@
     import {mapState, mapMutations} from 'vuex'
     import {msiteAddress, shopDetails, foodMenu, getRatingList, ratingScores, ratingTags} from 'src/service/getData'
     import loading from 'src/components/common/loading'
-    import buyCart from 'src/components/common/buyCart'
     import ratingStar from 'src/components/common/ratingStar'
     import {loadMore, getImgPath} from 'src/components/common/mixin'
     import {imgBaseUrl} from 'src/config/env'

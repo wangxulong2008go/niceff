@@ -33,7 +33,6 @@
 	import headTop from 'src/components/header/head'
     import {getImgPath} from 'src/components/common/mixin'
     import ratingStar from 'src/components/common/ratingStar'
-    import buyCart from 'src/components/common/buyCart'
     import {imgBaseUrl} from 'src/config/env'
 
     export default {

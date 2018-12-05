@@ -1,9 +1,6 @@
 import App from '../App'
 
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
-const city = r => require.ensure([], () => r(require('../page/city/city')), 'city')
-const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
-const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
 const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
 const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 const profile = r => require.ensure([], () => r(require('../page/profile/profile')), 'profile')
@@ -46,9 +43,6 @@ const questionDetail = r => require.ensure([], () => r(require('../page/service/
 const find = r => require.ensure([], () => r(require('../page/find/find')), 'find')
 const download = r => require.ensure([], () => r(require('../page/download/download')), 'download')
 
-
-
-
 export default [{
     path: '/',
     component: App, //顶层路由，对应index.html
@@ -58,31 +52,16 @@ export default [{
             path: '',
             redirect: '/home'
         },
-        //首页城市列表页
+        //首页
         {
             path: '/home',
-            component: home
-        },
-        //当前选择城市页
-        {
-            path: '/city/:cityid',
-            component: city
-        },
-        //所有商铺列表页
-        {
-            path: '/msite',
-            component: msite,
+            component: home,
             meta: { keepAlive: true },
         },
         //特色商铺列表页
         {
             path: '/food',
             component: food
-        },
-        //搜索页
-        {
-            path: '/search/:geohash',
-            component: search
         },
         //商铺详情页
         {
