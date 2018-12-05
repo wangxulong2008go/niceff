@@ -45,7 +45,7 @@ export default {
 		//初始化swiper,banner
 		new Swiper('.swiper-container', {
 			pagination: '.swiper-pagination',
-			autoplay : 2000,
+			autoplay : 1000,
 			speed:500,
 			loop: true
 		});
@@ -96,7 +96,7 @@ export default {
 		border-bottom: 0.025rem solid $bc;
 		height: 10.6rem;
 		.swiper-container{
-			@include wh(100%, auto);
+			@include wh(100%, '100%');
 			padding-bottom: 0.6rem;
 			.swiper-pagination{
 				bottom: 0.2rem;
